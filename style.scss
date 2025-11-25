@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  color: whitesmoke;
+
+  main {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+      to right bottom,
+      rgb(39, 38, 38),
+      rgb(59, 54, 54),
+      rgb(30, 29, 29)
+    );
+
+    section {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+
+      .all-reels {
+        height: 850px;
+        width: 450px;
+        background-color: rgb(88, 86, 86);
+        border-radius: 20px;
+        overflow-y: auto;
+        border: none;
+
+        .reel-card {
+          height: 850px;
+          width: 100%;
+          position: relative;
+        }
+
+        .reels {
+          height: 100%;
+          width: 100%;
+
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .bottom {
+          height: 150px;
+          width: 100%;
+          position: absolute;
+          bottom: 0;
+          background-color: transparent;
+
+          .bottom-top {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            gap: 10px;
+
+            .profileimage {
+              height: 50px;
+              width: 50px;
+              border-radius: 50%;
+              overflow: hidden;
+
+              img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+              }
+            }
+
+            .username {
+              font-size: 15px;
+              font-weight: bold;
+              font-family: "Gill Sans", Calibri, sans-serif;
+            }
+
+            button {
+              padding: 5px 10px;
+              border-radius: 5px;
+              background: transparent;
+              color: white;
+              border: 1px solid whitesmoke;
+              font-size: 18px;
+            }
+          }
+
+          .description {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+
+            p {
+              font-size: 20px;
+              font-family: "Gill Sans", Calibri, sans-serif;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}
