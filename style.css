@@ -64,8 +64,8 @@ body main section .all-reels .reels {
   height: 100%;
   width: 100%;
 }
-html main section .all-reels .reels img,
-body main section .all-reels .reels img {
+html main section .all-reels .reels video,
+body main section .all-reels .reels video {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
