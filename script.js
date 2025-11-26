@@ -278,7 +278,7 @@ reels.forEach(function(elem){
               </div>
             </div>
             <div class="right">
-              <div class="right-icons">${elem.isLiked ? '<i class="ri-heart-3-line"></i>': '<i class="ri-heart-3-fill"></i>'} <span>${elem.likes}</span>
+              <div class="right-icons">${elem.isLiked ? '<i class="ri-heart-3-line"></i>': '<i class="ri-heart-3-fill  red"></i>'} <span>${elem.likes}</span>
               </div>
               <div class="right-icons">
                 <i class="ri-chat-3-line"></i> <span>${elem.comments}</span>
