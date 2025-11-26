@@ -273,7 +273,8 @@ reels.forEach(function(elem , idx){
                 <div class="username">
                   <h3>${elem.username}</h3>
                 </div>
-                <button>${elem.isFollowed?"Unfollow":"Follow"}</button>
+                <button class="followInfo" data-id=${idx}>${elem.isFollowed ? "Unfollow" : "Follow"}</button>
+
               </div>
 
               <div class="description">
@@ -319,13 +320,30 @@ reels.forEach(function(elem , idx){
 
  allreels.addEventListener("click",function(dets){
 
+const follow = dets.target.closest(".followInfo");
+if (follow) {
+  const idx1 = follow.dataset.id;
+
+  reels[idx1].isFollowed = !reels[idx1].isFollowed;
+
+  addData();
+  return;
+}
+
+
     const like = dets.target.closest(".like");
     if(!like) return;
     const idx = like.dataset.id;
     // console.log(like.dataset.id);
-    console.log(reels[idx]);
-
-    
+    if(!reels[idx].isLiked){
+    reels[idx].likes++;
+    reels[idx].isLiked = true;
+    }else{
+       reels[idx].likes--;
+    reels[idx].isLiked = false;
+    }
+ 
+    addData();
  })
 
 
