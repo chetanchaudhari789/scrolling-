@@ -20,7 +20,7 @@ const reels = [
     likes: 2540,
     comments: 120,
     shares: 66,
-    isLiked: true,
+    isLiked: false,
     isFollowed: true,
   },
   {
@@ -44,7 +44,7 @@ const reels = [
     likes: 1860,
     comments: 77,
     shares: 22,
-    isLiked: true,
+    isLiked: false,
     isFollowed: false,
   },
   {
@@ -80,7 +80,7 @@ const reels = [
     likes: 2100,
     comments: 77,
     shares: 35,
-    isLiked: true,
+    isLiked: false,
     isFollowed: true,
   },
   {
@@ -92,7 +92,7 @@ const reels = [
     likes: 4320,
     comments: 156,
     shares: 92,
-    isLiked: true,
+    isLiked: false,
     isFollowed: false,
   },
   {
@@ -116,7 +116,7 @@ const reels = [
     likes: 980,
     comments: 33,
     shares: 12,
-    isLiked: true,
+    isLiked: false,
     isFollowed: false,
   },
   {
@@ -140,7 +140,7 @@ const reels = [
     likes: 2650,
     comments: 102,
     shares: 58,
-    isLiked: true,
+    isLiked: false,
     isFollowed: true,
   },
   {
@@ -176,7 +176,7 @@ const reels = [
     likes: 4100,
     comments: 132,
     shares: 80,
-    isLiked: true,
+    isLiked: false,
     isFollowed: false,
   },
   {
@@ -188,7 +188,7 @@ const reels = [
     likes: 5400,
     comments: 200,
     shares: 99,
-    isLiked: true,
+    isLiked: false,
     isFollowed: true,
   },
   {
@@ -224,7 +224,7 @@ const reels = [
     likes: 3800,
     comments: 130,
     shares: 70,
-    isLiked: true,
+    isLiked: false,
     isFollowed: true,
   },
   {
@@ -318,32 +318,37 @@ reels.forEach(function(elem , idx){
  addData();
 
 
- allreels.addEventListener("click",function(dets){
+ allreels.addEventListener("click", function (dets) {
+  // ----- FOLLOW BUTTON -----
+  const followBtn = dets.target.closest(".followInfo");
+  if (followBtn) {
+    const idx = followBtn.dataset.id;
+    reels[idx].isFollowed = !reels[idx].isFollowed;
 
-const follow = dets.target.closest(".followInfo");
-if (follow) {
-  const idx1 = follow.dataset.id;
+    followBtn.textContent = reels[idx].isFollowed ? "Unfollow" : "Follow";
+    return;
+  }
 
-  reels[idx1].isFollowed = !reels[idx1].isFollowed;
+  // ----- LIKE BUTTON -----
+  const likeDiv = dets.target.closest(".like");
+  if (likeDiv) {
+    const idx = likeDiv.dataset.id;
 
-  addData();
-  return;
-}
+    reels[idx].isLiked = !reels[idx].isLiked;
+    reels[idx].likes += reels[idx].isLiked ? 1 : -1;
 
+    const icon = likeDiv.querySelector("i");
+    const count = likeDiv.querySelector("span");
 
-    const like = dets.target.closest(".like");
-    if(!like) return;
-    const idx = like.dataset.id;
-    // console.log(like.dataset.id);
-    if(!reels[idx].isLiked){
-    reels[idx].likes++;
-    reels[idx].isLiked = true;
-    }else{
-       reels[idx].likes--;
-    reels[idx].isLiked = false;
+    if (reels[idx].isLiked) {
+      icon.classList.remove("ri-heart-3-line");
+      icon.classList.add("ri-heart-3-fill", "red");
+    } else {
+      icon.classList.remove("ri-heart-3-fill", "red");
+      icon.classList.add("ri-heart-3-line");
     }
- 
-    addData();
- })
 
-
+    count.textContent = reels[idx].likes;
+    return;
+  }
+});
