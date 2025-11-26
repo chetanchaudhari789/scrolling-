@@ -247,8 +247,13 @@ const reels = [
  let allreels = document.querySelector(".all-reels");
 
 
+
+
+
+ function addData(){
 clutter = " "
-reels.forEach(function(elem){
+reels.forEach(function(elem , idx){
+    //console.log(idx);
         clutter += ` <div class="reel-card">
             <div class="reels">
               <video autoplay loop muted playsinline>
@@ -278,18 +283,49 @@ reels.forEach(function(elem){
               </div>
             </div>
             <div class="right">
-              <div class="right-icons">${elem.isLiked ? '<i class="ri-heart-3-line"></i>': '<i class="ri-heart-3-fill  red"></i>'} <span>${elem.likes}</span>
-              </div>
               <div class="right-icons">
+              <div class="like" data-id=${idx}>
+            ${elem.isLiked 
+              ? '<i class="ri-heart-3-fill red"></i>'
+              : '<i class="ri-heart-3-line"></i>'}
+            <span>${elem.likes}</span>
+            </div>
+          </div>
+              <div class="right-icons">
+              <div class="comment" id=${idx}>
                 <i class="ri-chat-3-line"></i> <span>${elem.comments}</span>
+                </div>
               </div>
               <div class="right-icons">
+              <div class="share" id=${idx}>
                 <i class="ri-share-forward-line"></i> <span>${elem.shares}</span>
               </div>
-              <div class="right-icons"><i class="ri-more-2-fill"></i></div>
+              </div>
+              <div class="right-icons">
+              <div class="menu" id=${idx}>
+              <i class="ri-more-2-fill"></i></div>
+            </div>
             </div>
           </div>`
     })
 
     
     allreels.innerHTML = clutter
+ }
+
+
+ addData();
+
+
+ allreels.addEventListener("click",function(dets){
+
+    const like = dets.target.closest(".like");
+    if(!like) return;
+    const idx = like.dataset.id;
+    // console.log(like.dataset.id);
+    console.log(reels[idx]);
+
+    
+ })
+
+
