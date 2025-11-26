@@ -29,16 +29,35 @@ html main section .all-reels,
 body main section .all-reels {
   height: 850px;
   width: 450px;
-  background-color: rgb(88, 86, 86);
   border-radius: 20px;
-  overflow-y: auto;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
   border: none;
+  background: transparent;
+  position: relative;
+}
+html main section .all-reels::-webkit-scrollbar,
+body main section .all-reels::-webkit-scrollbar {
+  display: none;
 }
 html main section .all-reels .reel-card,
 body main section .all-reels .reel-card {
   height: 850px;
   width: 100%;
   position: relative;
+  margin-bottom: 25px;
+  border-radius: 20px;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  background-color: rgba(88, 86, 86, 0.8);
+  scroll-snap-align: start;
+}
+html main section .all-reels .reel-card:last-child,
+body main section .all-reels .reel-card:last-child {
+  margin-bottom: 0;
 }
 html main section .all-reels .reels,
 body main section .all-reels .reels {
@@ -73,6 +92,7 @@ body main section .all-reels .bottom .bottom-top .profileimage {
   width: 50px;
   border-radius: 50%;
   overflow: hidden;
+  cursor: pointer;
 }
 html main section .all-reels .bottom .bottom-top .profileimage img,
 body main section .all-reels .bottom .bottom-top .profileimage img {
@@ -86,6 +106,7 @@ body main section .all-reels .bottom .bottom-top .username {
   font-size: 15px;
   font-weight: bold;
   font-family: "Gill Sans", Calibri, sans-serif;
+  cursor: pointer;
 }
 html main section .all-reels .bottom .bottom-top button,
 body main section .all-reels .bottom .bottom-top button {
@@ -95,6 +116,7 @@ body main section .all-reels .bottom .bottom-top button {
   color: white;
   border: 1px solid whitesmoke;
   font-size: 18px;
+  cursor: pointer;
 }
 html main section .all-reels .bottom .description,
 body main section .all-reels .bottom .description {
@@ -107,4 +129,38 @@ body main section .all-reels .bottom .description p {
   font-size: 20px;
   font-family: "Gill Sans", Calibri, sans-serif;
   font-weight: bold;
+}
+html main section .all-reels .right,
+body main section .all-reels .right {
+  position: absolute;
+  right: 12px;
+  bottom: 30%;
+  transform: translateY(60%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+html main section .all-reels .right .right-icons,
+body main section .all-reels .right .right-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  opacity: 0.95;
+}
+html main section .all-reels .right i,
+body main section .all-reels .right i {
+  font-size: 30px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+html main section .all-reels .right span,
+body main section .all-reels .right span {
+  font-size: 18px;
+  margin-top: 4px;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }/*# sourceMappingURL=style.css.map */
